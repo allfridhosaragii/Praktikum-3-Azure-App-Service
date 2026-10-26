@@ -18,7 +18,7 @@ if (!defined('APP_ENV')) {
 }
 
 if (!defined('APP_VERSION')) {
-    define('APP_VERSION', '3.0.1-CI-CD');
+    define('APP_VERSION', '3.0.2-CI-CD');
 }
 
 // Pengaturan Timezone Indonesia (WIB)

@@ -33,7 +33,7 @@
             <div>
                 <strong>Praktikum 3 Komputasi Awan</strong> &bull; Allfridho Prima Anjaynata Saragi (NIM: 102062400045)
                 <div style="font-size: 0.72rem; color: #64748b; margin-top: 2px;">
-                    Microsoft Azure App Service (PaaS Linux F1) &bull; PHP Native 8.x &bull; CI/CD GitHub Actions &bull; Build v3.0.1
+                    Microsoft Azure App Service (PaaS Linux F1) &bull; PHP Native 8.x &bull; CI/CD GitHub Actions &bull; Build v<?= APP_VERSION ?>
                 </div>
             </div>
             <div class="footer-links">

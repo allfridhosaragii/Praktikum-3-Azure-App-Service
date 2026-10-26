@@ -24,18 +24,33 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
-          extensions: pdo, pdo_mysql, mbstring, openssl
+          extensions: pdo, pdo_sqlite, mbstring, openssl
 
       - name: Validate PHP Syntax (Linting)
         run: |
           echo "Memvalidasi seluruh berkas PHP dalam repositori..."
           find . -name "*.php" -not -path "./vendor/*" -not -path "./.git/*" -exec php -l {} \;
 
+      - name: Prepare Clean Production Artifact (Excludes docs, evidence, tests, audit)
+        run: |
+          echo "Menyiapkan direktori paket deployment produksi yang bersih..."
+          mkdir -p staging
+          cp -r index.php create.php edit.php delete.php staging/
+          cp -r config includes assets database staging/
+          cp .env.example staging/ 2>/dev/null || true
+          
+          # Hapus berkas basis data lokal atau dump dari direktori staging
+          rm -f staging/database/*.db staging/database/*.sqlite staging/database/*.dump
+          
+          echo "=== Berkas Runtime yang Siap Dideploy ke Azure App Service ==="
+          ls -la staging/
+          ls -la staging/database/
+
       - name: Upload Artifact for Deployment
         uses: actions/upload-artifact@v4
         with:
           name: php-app
-          path: .
+          path: staging/
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,6 +64,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: php-app
+          path: deploy_pkg
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -57,4 +73,4 @@ jobs:
           app-name: 'web-praktikum-allfridho'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
-          package: .
+          package: deploy_pkg
