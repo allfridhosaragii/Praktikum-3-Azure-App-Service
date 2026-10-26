@@ -1,0 +1,23 @@
+# Environment and sensitive secrets
+.env
+.env.local
+.env.*.local
+*.log
+
+# Local test databases
+database/*.db
+database/*.sqlite
+
+# Editor and OS caches
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Dependencies if any
+vendor/
+node_modules/
+
+# Test output caches
+tests/tmp/
