@@ -5,6 +5,10 @@
  * Mahasiswa: Allfridho Prima Anjaynata Saragi (102062400045)
  */
 
+if (ob_get_level() === 0) {
+    ob_start();
+}
+
 if (!defined('APP_NAME')) {
     define('APP_NAME', 'Student Task Manager');
 }
@@ -24,3 +28,4 @@ date_default_timezone_set('Asia/Jakarta');
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+

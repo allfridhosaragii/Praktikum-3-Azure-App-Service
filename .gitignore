@@ -3,6 +3,7 @@
 .env.local
 .env.*.local
 *.log
+deploy.zip
 
 # Local test databases
 database/*.db

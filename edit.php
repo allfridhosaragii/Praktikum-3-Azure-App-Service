@@ -5,9 +5,11 @@
  * Mahasiswa: Allfridho Prima Anjaynata Saragi (NIM: 102062400045)
  */
 
-$pageTitle = 'Edit Data Tugas';
-require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/config/app.php';
+require_once __DIR__ . '/config/database.php';
+require_once __DIR__ . '/includes/functions.php';
 
+$db = get_db();
 $pdo = $db->getConnection();
 if (!$pdo) {
     set_flash('danger', 'Koneksi database offline.');
@@ -100,6 +102,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+$pageTitle = 'Edit Data Tugas';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <div class="form-card">
