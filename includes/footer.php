@@ -21,7 +21,7 @@
                 <form id="modal-delete-form" action="delete.php" method="POST" style="display: inline;">
                     <input type="hidden" name="csrf_token" value="<?= get_csrf_token() ?>">
                     <input type="hidden" name="id" id="modal-delete-task-id" value="">
-                    <button type="submit" class="btn btn-danger btn-sm">Ya, Hapus Data</button>
+                    <button type="submit" id="confirm-delete-btn" class="btn btn-danger btn-sm">Ya, Hapus Data</button>
                 </form>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div>
                 <strong>Praktikum 3 Komputasi Awan</strong> &bull; Allfridho Prima Anjaynata Saragi (NIM: 102062400045)
                 <div style="font-size: 0.72rem; color: #64748b; margin-top: 2px;">
-                    Microsoft Azure App Service (PaaS Linux F1) &bull; PHP Native 8.x &bull; CI/CD GitHub Actions
+                    Microsoft Azure App Service (PaaS Linux F1) &bull; PHP Native 8.x &bull; CI/CD GitHub Actions &bull; Build v3.0.1
                 </div>
             </div>
             <div class="footer-links">

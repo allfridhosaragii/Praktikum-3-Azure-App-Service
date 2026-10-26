@@ -18,7 +18,7 @@ if (!defined('APP_ENV')) {
 }
 
 if (!defined('APP_VERSION')) {
-    define('APP_VERSION', '3.0.0-Azure');
+    define('APP_VERSION', '3.0.1-CI-CD');
 }
 
 // Pengaturan Timezone Indonesia (WIB)
