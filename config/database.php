@@ -114,6 +114,14 @@ class Database {
                 }
             }
 
+            // Validasi Keamanan: Jika database baru di /home/data/ sudah aktif dan valid,
+            // bersihkan berkas lama di wwwroot/database/ agar tidak terekspos ke HTTP publik!
+            if (file_exists($newDbPath) && filesize($newDbPath) > 0 && file_exists($oldDbPath)) {
+                // Hapus berkas lama dari wwwroot demi kepatuhan audit keamanan
+                @unlink($oldDbPath);
+                error_log("[Database Security Hardening] Berkas lama di wwwroot/database/tasks.db berhasil dihapus untuk mencegah akses publik");
+            }
+
             return $newDbPath;
         }
 
